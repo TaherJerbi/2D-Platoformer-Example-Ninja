@@ -4,13 +4,13 @@ public class PlayerThrow : MonoBehaviour {
     Animator anim;
 
     [SerializeField]
-    GameObject shuriken;
+    GameObject kunaiPrefab;
 
     [SerializeField]
     Transform hand;
 
     [SerializeField]
-    private float shurikenSpeed;
+    private float kunaiSpeed;
 
     // Use this for initialization
     void Start()
@@ -23,15 +23,27 @@ public class PlayerThrow : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (!GetComponent<PlayerJump>()._grounded || !anim.GetBool("Run"))
+            
+            if (GetComponent<PlayerJump>() && GetComponent<PlayerGlide>())
             {
-                GameObject sh = Instantiate(shuriken, hand.position, Quaternion.identity);
-                
-                sh.GetComponent<Rigidbody2D>().velocity = hand.right * shurikenSpeed * GetComponent<PlayerMotor>().dir;
-                sh.transform.up = sh.GetComponent<Rigidbody2D>().velocity;
-                anim.SetTrigger("Throw");
-                Destroy(sh, 5f);
+                //Only shoot if (jumping and not gliding) or (running)
+                if ((!GetComponent<PlayerJump>().grounded && !GetComponent<PlayerGlide>().gliding) || GetComponent<PlayerMotor>().x == 0)
+                {
+                    Throw();
+                }
             }
+            else
+                Throw(); //You can still throw if you don't have PlayerJump and PlayerGlide Scripts
         }
+    }
+
+    void Throw()
+    {
+        GameObject _kunai = Instantiate(kunaiPrefab, hand.position, Quaternion.identity);
+                
+        _kunai.GetComponent<Rigidbody2D>().velocity = hand.right * kunaiSpeed * GetComponent<PlayerMotor>().dir;
+        _kunai.transform.up = _kunai.GetComponent<Rigidbody2D>().velocity;
+        anim.SetTrigger("Throw");
+        Destroy(_kunai, 2);
     }
 }

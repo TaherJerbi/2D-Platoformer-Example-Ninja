@@ -13,6 +13,8 @@ public class PlayerGlide : MonoBehaviour {
     [SerializeField]
     float glideFactor;
 
+    public bool gliding;
+
     float initialGravity;
     float Glidegravity;
 	// Use this for initialization
@@ -21,6 +23,7 @@ public class PlayerGlide : MonoBehaviour {
         anim = GetComponent<Animator>();
         playerJump = GetComponent<PlayerJump>();
 
+        //Calculate Glide gravity
         initialGravity = rb2d.gravityScale;
         Glidegravity = initialGravity / glideFactor;
 	}
@@ -29,15 +32,16 @@ public class PlayerGlide : MonoBehaviour {
 	void Update () {
 
         //Only Glide if GROUNDED and FALLING
-        if (!playerJump._grounded && rb2d.velocity.y <=0 && Input.GetKey(KeyCode.LeftShift))
+        if (!playerJump.grounded && rb2d.velocity.y <=0 && Input.GetKey(KeyCode.LeftShift))
         {
+            gliding = true;
             rb2d.gravityScale = Glidegravity;
-            anim.SetBool("Glide", true);
         }
         else
         {
-            rb2d.gravityScale = initialGravity;
-           anim.SetBool("Glide", false);
+            gliding = false;
+           rb2d.gravityScale = initialGravity;
         }
-	}
+        anim.SetBool("Glide", gliding);
+    }
 }

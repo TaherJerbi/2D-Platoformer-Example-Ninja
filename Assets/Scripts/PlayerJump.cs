@@ -7,12 +7,11 @@ public class PlayerJump : MonoBehaviour {
 
     [SerializeField]
     private float jumpForce;
-    [SerializeField]
-    private bool grounded;
 
-    public bool _grounded { get { return grounded; }
-        private set { grounded = value; }
-    }
+    public bool grounded;
+
+    bool jump;
+
     [SerializeField]
     Collider2D groundCheck;
     [SerializeField]
@@ -27,16 +26,24 @@ public class PlayerJump : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (groundCheck.IsTouchingLayers(ground))
-            _grounded = true;
-        else _grounded = false;
+        grounded = groundCheck.IsTouchingLayers(ground);
 
-        anim.SetBool("Grounded", _grounded);
+        anim.SetBool("Grounded", grounded);
 
-        if(_grounded && Input.GetKeyDown(KeyCode.Space))
+        if(grounded && Input.GetKeyDown(KeyCode.Space))
         {
-            rb2d.AddForce(Vector3.up * jumpForce);
+            jump = true;
+        }
+    }
+    // Put AddForce in FixedUpdate and the Input in Update smoothes your gameplay
+    void FixedUpdate()
+    {
+        if (jump)
+        {
+            rb2d.AddForce(Vector2.up * jumpForce);
+            jump = false;
             
         }
+           
     }
 }

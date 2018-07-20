@@ -484,6 +484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 347110893}
   smooth: 6
+  freeRange: 2
 --- !u!124 &572969630
 Behaviour:
   m_ObjectHideFlags: 0

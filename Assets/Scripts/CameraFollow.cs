@@ -7,6 +7,8 @@ public class CameraFollow : MonoBehaviour {
     Vector3 range;
 
     public float smooth;
+
+    public float freeRange;
 	// Use this for initialization
 	void Start () {
         range = transform.position - playerTransform.position;
@@ -15,7 +17,9 @@ public class CameraFollow : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position = Vector3.Lerp(transform.position,new Vector3((playerTransform.position + range).x,transform.position.y, (playerTransform.position + range).z), Time.deltaTime * smooth);
+        float v = Input.GetAxis("Vertical") * freeRange;
+        Vector3 targetPosition = new Vector3((playerTransform.position + range).x, (playerTransform.position + range).y + v * freeRange, (playerTransform.position + range).z);
+        transform.position = Vector3.Lerp(transform.position,targetPosition, Time.deltaTime * smooth);
         
 	}
 }

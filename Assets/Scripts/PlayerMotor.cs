@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -32,7 +33,8 @@ public class PlayerMotor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        
+        if (Input.GetKeyDown(KeyCode.R))
+            SceneManager.LoadScene(0);
         x = Input.GetAxisRaw("Horizontal") * speed * Time.fixedDeltaTime;
         rb2d.velocity = new Vector2(x,rb2d.velocity.y);
 

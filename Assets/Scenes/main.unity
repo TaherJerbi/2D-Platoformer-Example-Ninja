@@ -273,7 +273,7 @@ Transform:
   m_GameObject: {fileID: 347110887}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -6.19, y: -3.95, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1935022282}
   m_Father: {fileID: 0}
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f2e9a3964d782428aaca871a77bb84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glideFactor: 5
+  glideFactor: 10
   gliding: 0
 --- !u!114 &347110896
 MonoBehaviour:
@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6529ffa6d09b9f440a27c57a055bcbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 2000
+  jumpForce: 1500
   grounded: 0
   groundCheck: {fileID: 347110889}
   ground:
@@ -484,7 +484,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 347110893}
   smooth: 5
-  freeRange: 2
+  freeRange: 2.5
 --- !u!124 &572969630
 Behaviour:
   m_ObjectHideFlags: 0
@@ -517,7 +517,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 0}
+  m_BackGroundColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -638,7 +638,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1165424321}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24, y: 2.9, z: 0}
+  m_LocalPosition: {x: 17.3, y: 3.1, z: 0}
   m_LocalScale: {x: 5.139938, y: 0.69006974, z: 0.09871949}
   m_Children: []
   m_Father: {fileID: 0}
@@ -838,7 +838,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1776441717}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.74, y: -3.7, z: 0}
+  m_LocalPosition: {x: 14.839998, y: -4.1000004, z: 0}
   m_LocalScale: {x: 5.139938, y: 0.69006974, z: 0.09871949}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1068,7 +1068,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2007878614}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.7, y: -0.8, z: 0}
+  m_LocalPosition: {x: 8.8, y: 0.5, z: 0}
   m_LocalScale: {x: 5.139938, y: 0.69006974, z: 0.09871949}
   m_Children: []
   m_Father: {fileID: 0}

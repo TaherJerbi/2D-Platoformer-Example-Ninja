@@ -26,6 +26,7 @@ public class PlayerMotor : MonoBehaviour {
         //Calculate the inverse scale
         leftScale = scale;
         leftScale.x = -scale.x;
+
         //Determine the initial direction
         dir = Mathf.RoundToInt(Mathf.Sign(scale.x));
         

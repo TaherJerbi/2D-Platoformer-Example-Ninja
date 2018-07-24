@@ -16,9 +16,10 @@ public class CameraFollow : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void LateUpdate () {
         float v = Input.GetAxis("Vertical") * freeRange;
-        Vector3 targetPosition = new Vector3((playerTransform.position + range).x, (playerTransform.position + range).y + v * freeRange, (playerTransform.position + range).z);
+        float targetX = playerTransform.position.x + range.x * playerTransform.gameObject.GetComponent<PlayerMotor>().dir;
+        Vector3 targetPosition = new Vector3(targetX, (playerTransform.position + range).y + v * freeRange, (playerTransform.position + range).z);
         transform.position = Vector3.Lerp(transform.position,targetPosition, Time.deltaTime * smooth);
         
 	}
